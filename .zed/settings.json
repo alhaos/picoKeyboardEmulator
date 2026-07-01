@@ -1,0 +1,16 @@
+// Folder-specific settings
+//
+// For a full list of overridable settings, and general information on folder-specific settings,
+// see the documentation: https://zed.dev/docs/configuring-zed#settings-files
+{
+  "lsp": {
+    "gopls": {
+      "initialization_options": {
+        "env": {
+          "GOROOT": "C:\\Users\\ALSemenov\\AppData\\Local\\tinygo\\goroot-ab3fefb363ab2cd137ff1f2aa0e816c32f281e78a080856f3c2118b2b589af35",
+          "GOFLAGS": "-tags=cortexm,baremetal,linux,arm,rp2040,rp,pico,tinygo,purego,osusergo,math_big_pure_go,gc.conservative,scheduler.tasks,serial.usb,tinygo.unicore",
+        },
+      },
+    },
+  },
+}
