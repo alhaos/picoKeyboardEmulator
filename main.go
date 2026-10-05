@@ -6,23 +6,26 @@ import (
 	"time"
 )
 
+const delay = 30 * time.Millisecond
+const pass = "" // pass here
+
 func main() {
 	kb := keyboard.Port()
 
 	led := machine.GP1
 	led.Configure(machine.PinConfig{Mode: machine.PinOutput})
-	led.High() // поменять на led.Low() если нужно выключить, и перепрошить
+	led.Low()
 
 	pressKey := func(k keyboard.Keycode, withShift bool) {
 		if withShift {
 			kb.Down(keyboard.KeyLeftShift)
-			time.Sleep(10 * time.Millisecond)
+			time.Sleep(delay)
 		}
 		kb.Down(k)
-		time.Sleep(10 * time.Millisecond)
+		time.Sleep(delay)
 		kb.Up(k)
 		if withShift {
-			time.Sleep(10 * time.Millisecond)
+			time.Sleep(delay)
 			kb.Up(keyboard.KeyLeftShift)
 		}
 		time.Sleep(30 * time.Millisecond)
@@ -127,9 +130,9 @@ func main() {
 
 		pressed := !stable
 		if pressed && !wasPressed {
-			typeString("your_pass_hera")
+			typeString(pass)
 			kb.Down(keyboard.KeyEnter)
-			time.Sleep(10 * time.Millisecond)
+			time.Sleep(delay)
 			kb.Up(keyboard.KeyEnter)
 		}
 		wasPressed = pressed
